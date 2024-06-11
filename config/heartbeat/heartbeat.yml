@@ -2,23 +2,16 @@ name: heartbeat
 
 heartbeat.monitors:
   - type: http
-    schedule: "@every 5s"
+    schedule: "@every 30s"
     urls:
       - http://elasticsearch:9200
     username: heartbeat_internal
     password: ${HEARTBEAT_INTERNAL_PASSWORD}
 
   - type: icmp
-    schedule: "@every 5s"
+    schedule: "@every 30s"
     hosts:
       - elasticsearch
-
-  - type: http
-    schedule: "@every 5s"
-    urls: ["http://www.google.com"]
-    service.name: google-service
-    id: google-id
-    name: google
 
 processors:
   - add_cloud_metadata: ~
